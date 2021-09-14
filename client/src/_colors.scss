@@ -1,0 +1,17 @@
+$primary-color: #c1ab8e;
+$primary-dark-color: #9f8563;
+$silver-color: #b5b8bc;
+$silver-dark-color: #9a9c9f;
+$gold-color: #eed23d;
+$gold-dark-color: #deba36;
+$font-color: #fff;
+$light-green-color: mediumspringgreen;
+$light-blue-color: #2facff;
+$red-alert-color: lighten(
+  $color: red,
+  $amount: 10,
+);
+$secondary-color: darken(
+  $color: $primary-color,
+  $amount: 15,
+);

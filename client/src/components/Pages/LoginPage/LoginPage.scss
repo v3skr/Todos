@@ -1,0 +1,25 @@
+.home-page {
+  height: 100%;
+  margin: 0 0 2rem 0;
+  .login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 10px;
+    h1 {
+      font-weight: 400;
+      font-size: 3rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .home-page {
+    .login-header {
+      padding: 2rem 10px;
+      h1 {
+        font-weight: 300;
+        font-size: 2rem;
+      }
+    }
+  }
+}

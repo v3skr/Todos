@@ -1,0 +1,47 @@
+@import "../../../colors";
+@import "../../../App";
+.todos-page {
+  header {
+    padding: 4rem 0;
+    h1 {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+  }
+  main {
+    padding: 0 2rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+}
+@media (max-width: 1600px) {
+  .todos-page {
+    main {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .todos-page {
+    main {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media (max-width: 800px) {
+  .todos-page {
+    header {
+      padding: 2.5rem 0;
+      h1 {
+        font-size: 2rem;
+        font-weight: 300;
+      }
+    }
+    main {
+      grid-gap: 1.5rem;
+      padding: 0 10px 1rem 10px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

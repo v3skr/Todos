@@ -1,0 +1,49 @@
+@import "colors";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap");
+
+$transition: all 0.2s ease;
+$shadow: 1px 1px 5px #555, -1px -1px 5px #555;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: IBM Plex Sans Arabic;
+  font-weight: 200;
+  color: $font-color;
+}
+body {
+  background-color: $primary-color;
+}
+.page-container {
+  min-height: 100vh;
+  padding: 0 0 5rem 0;
+}
+.App {
+  position: relative;
+  text-align: center;
+}
+.alert {
+  position: absolute;
+  top: 90px;
+  left: 10px;
+  right: 10px;
+  border-radius: 3px;
+  background-color: $red-alert-color;
+  padding: 10px 0;
+  margin: 5px auto;
+}
+.btn {
+  background-color: $primary-color;
+  padding: 5px 25px;
+  font-size: 1.1rem;
+  margin: 1rem 0 0 0;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  transition: $transition;
+  &:hover {
+    background-color: darken($color: $primary-color, $amount: 5);
+    color: #111;
+  }
+}

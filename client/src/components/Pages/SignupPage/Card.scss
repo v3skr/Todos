@@ -1,0 +1,17 @@
+@import "../LoginPage/Card/Card";
+@import "../../../App";
+.signup-card {
+  @extend .login-card;
+  button {
+    margin: 7rem 0 0 0;
+  }
+  .password-check-line {
+    transition: $transition;
+    width: 0%;
+    height: 5px;
+    margin: 10px 15px;
+    transition: $transition;
+    border-radius: 20px;
+    background-color: red;
+  }
+}

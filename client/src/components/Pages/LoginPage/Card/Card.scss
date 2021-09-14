@@ -1,0 +1,41 @@
+@import "../../../../colors";
+@import "../../../../App";
+.login-card {
+  position: relative;
+  box-shadow: $shadow;
+  width: 350px;
+  background-color: $secondary-color;
+  padding: 1rem 5px 2rem 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  header {
+    padding: 15px 0 5px 0;
+    border-bottom: 5px solid $primary-color;
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  main {
+    margin: 4rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .reset-password {
+      font-size: 15px;
+      color: lighten($color: $primary-color, $amount: 10);
+      transition: $transition;
+      text-decoration: none;
+      margin: 1.5rem 0;
+      &:hover {
+        color: lighten($color: $primary-color, $amount: 30);
+        transform: scale(1.2);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .login-card {
+    width: 90%;
+  }
+}

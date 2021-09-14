@@ -1,0 +1,71 @@
+@import "../../colors";
+.header {
+  padding: 1rem 0;
+  background-color: $secondary-color;
+  color: $font-color;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 1px 10px #333;
+
+  .btn-con-header {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-radius: 5px;
+    padding: 0 5px 0 0;
+    background-color: $secondary-color;
+    &:hover {
+      display: flex;
+    }
+    button {
+      margin: 10px 5px;
+    }
+  }
+  .nav {
+    position: absolute;
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    padding: 0 20px;
+    cursor: pointer;
+    div {
+      width: 35px;
+      border-radius: 30px;
+      height: 3px;
+      background-color: #fff;
+      margin: 3px 0;
+    }
+    &:hover + .btn-con-header {
+      display: flex;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .header {
+    .btn-con-header {
+      right: 5px;
+      bottom: -6rem;
+      flex-direction: column;
+      justify-content: center;
+      display: none;
+      height: auto;
+      padding: 10px 0 0px 0;
+      box-shadow: 1px 1px 5px #555, -1px -1px 5px #555;
+      button {
+        width: 90%;
+        margin: 0px 10px 10px 10px;
+      }
+    }
+    .nav {
+      display: flex;
+    }
+  }
+}
