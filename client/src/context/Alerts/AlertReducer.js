@@ -3,6 +3,8 @@ import {
   REMOVE_ALERT_SIGNUP,
   SET_ALERT_LOGIN,
   SET_ALERT_SIGNUP,
+  SET_ALERT_CHANGE_PASS,
+  REMOVE_ALERT_CHANGE_PASS,
 } from "../../types";
 
 const AlertReducer = (state, action) => {
@@ -31,6 +33,20 @@ const AlertReducer = (state, action) => {
       return {
         ...state,
         alertsSignup: state.alertsSignup.filter(
+          (alrt) => alrt.id !== action.payload
+        ),
+      };
+    }
+    case SET_ALERT_CHANGE_PASS: {
+      return {
+        ...state,
+        alertsChangePass: [...state.alertsChangePass, action.payload],
+      };
+    }
+    case REMOVE_ALERT_CHANGE_PASS: {
+      return {
+        ...state,
+        alertsChangePass: state.alertsChangePass.filter(
           (alrt) => alrt.id !== action.payload
         ),
       };

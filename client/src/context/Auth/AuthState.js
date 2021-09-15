@@ -6,7 +6,7 @@ import joi from "@hapi/joi";
 
 const AuthState = (props) => {
   const alertContext = useContext(AlertContext);
-  const { setAlertLogin, setSignUpAlerts } = alertContext;
+  const { setAlertLogin, setSignUpAlerts, setAlertChangePass } = alertContext;
   const initalState = {};
 
   const [state, dispatch] = useReducer(AuthReducer, initalState);
@@ -51,11 +51,23 @@ const AuthState = (props) => {
   //delete user account :: DELETE
   const deleteAcoount = () => {};
 
+  //Reset Password :: UPDATE
+  const changePass = (Email) => {
+    const EmailSchema = joi.object({
+      Email: joi.string().email().required(),
+    });
+    const { error } = EmailSchema.validate({ Email });
+    console.log("");
+    if (error) {
+      setAlertChangePass(error.details[0].message.replace(/"/g, ""), "err");
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
         login,
         signUp,
+        changePass,
       }}
     >
       {props.children}

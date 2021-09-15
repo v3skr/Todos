@@ -15,9 +15,15 @@
       font-size: 2.5rem;
       padding: 2rem 0;
     }
-    div {
-      margin: 2rem auto 0 auto;
+    .alert,
+    .label {
       width: 70%;
+    }
+    .alert {
+      text-align: center;
+    }
+    .label {
+      margin: 2.5rem auto 0 auto;
     }
     input {
       width: 70%;
@@ -26,7 +32,7 @@
     }
     button {
       display: block;
-      margin: 4rem auto;
+      margin: 3rem auto;
     }
   }
   .success {
@@ -40,6 +46,50 @@
     i {
       padding: 2rem 0;
       color: $light-green-color;
+    }
+  }
+}
+@media (max-width: 1320px) {
+  .reset-pass {
+    .input-item {
+      .alert {
+        top: 10px;
+        width: 90%;
+      }
+      .label {
+        margin: 2rem auto 0 auto;
+      }
+      h1 {
+        font-size: 2rem;
+        padding: 4rem 0 0 0;
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .reset-pass {
+    width: 90%;
+    .input-item {
+      input,
+      .label {
+        width: 85%;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .reset-pass {
+    .input-item {
+      input,
+      .label {
+        width: 100%;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   }
 }

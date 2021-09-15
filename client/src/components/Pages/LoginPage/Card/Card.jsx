@@ -43,7 +43,7 @@ const Card = () => {
             onChange={onChange}
             type="password"
           />
-          <a href="/" className="reset-password">
+          <a href="/resetpassword" className="reset-password">
             Reset Password
           </a>
         </main>

@@ -30,7 +30,7 @@ body {
   right: 10px;
   border-radius: 3px;
   background-color: $red-alert-color;
-  padding: 10px 0;
+  padding: 10px;
   margin: 5px auto;
 }
 .btn {
@@ -43,6 +43,7 @@ body {
   border: none;
   transition: $transition;
   &:hover {
+    outline: none;
     background-color: darken($color: $primary-color, $amount: 5);
     color: #111;
   }

@@ -7,12 +7,15 @@ import {
   REMOVE_ALERT_SIGNUP,
   SET_ALERT_LOGIN,
   SET_ALERT_SIGNUP,
+  SET_ALERT_CHANGE_PASS,
+  REMOVE_ALERT_CHANGE_PASS,
 } from "../../types";
 
 const AlertState = (props) => {
   const initalState = {
     alertsLogin: [],
     alertsSignup: [],
+    alertsChangePass: [],
   };
   const [state, dispatch] = useReducer(AlertReducer, initalState);
 
@@ -40,6 +43,7 @@ const AlertState = (props) => {
     });
     setTimeout(() => removeSignUpAlers(id), 3000);
   };
+
   //Removes sign up alrets
   const removeSignUpAlers = (id) => {
     dispatch({
@@ -47,13 +51,27 @@ const AlertState = (props) => {
       payload: id,
     });
   };
+
+  //Set change pass alert
+  const setAlertChangePass = (msg, type) => {
+    const id = uuid();
+    dispatch({ type: SET_ALERT_CHANGE_PASS, payload: { msg, type, id } });
+    setTimeout(() => removeChangePassAlert(id), 3000);
+  };
+
+  // Remove change pass alert
+  const removeChangePassAlert = (id) => {
+    dispatch({ type: REMOVE_ALERT_CHANGE_PASS, payload: id });
+  };
   return (
     <AlertContext.Provider
       value={{
         alertsLogin: state.alertsLogin,
         alertsSignup: state.alertsSignup,
+        alertsChangePass: state.alertsChangePass,
         setAlertLogin,
         setSignUpAlerts,
+        setAlertChangePass,
       }}
     >
       {props.children}
