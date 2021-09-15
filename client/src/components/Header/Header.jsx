@@ -4,9 +4,9 @@ import "./Header.scss";
 
 const Header = () => {
   const his = useHistory();
-  return (
+  return !true ? (
     <div className="header">
-      <h1>Todos App</h1>
+      <h1>Todos</h1>
       <div className="nav">
         <div></div>
         <div></div>
@@ -19,6 +19,20 @@ const Header = () => {
         <button className="btn" onClick={() => his.push("/signup")}>
           Sign Up
         </button>
+      </div>
+    </div>
+  ) : (
+    <div className="header2">
+      <h1>Home</h1>
+      <div className="nav">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="header-btns ">
+        <i className="fas fa-home fa-2x"></i>
+        <i className="far fa-user-circle fa-2x"></i>
+        <i className="fas fa-plus fa-2x"></i>
       </div>
     </div>
   );

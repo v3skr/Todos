@@ -1,0 +1,59 @@
+@import "../../../colors";
+@import "../../../App";
+.new-pass {
+  position: relative;
+  margin: 15rem auto 0 auto;
+  height: 470px;
+  width: 50%;
+  background-color: $secondary-color;
+  .con {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    .password-check-line {
+      transition: $transition;
+      width: 0%;
+      height: 5px;
+      margin: 10px 15px;
+      transition: $transition;
+      border-radius: 20px;
+      background-color: $red-alert-color;
+    }
+  }
+  h1 {
+    padding: 2rem 0 3.5rem 0;
+  }
+  .input-item {
+    margin-bottom: 1rem;
+  }
+  .alert {
+    top: 80px;
+    width: 90%;
+  }
+  button {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 4rem;
+    width: 200px;
+  }
+}
+@media (max-width: 1200px) {
+  .new-pass {
+    width: 70%;
+  }
+}
+@media (max-width: 700px) {
+  .new-pass {
+    margin: 5rem auto 0 auto;
+    width: 95%;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}

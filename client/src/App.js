@@ -6,6 +6,7 @@ import SignupPage from "./components/Pages/SignupPage/SignupPage";
 import LandingPage from "./components/Pages/LandingPage/LandingPage";
 import TodosPages from "./components/Pages/TodosPage/TodosPages";
 import ResetPassPage from "./components/Pages/ResetPassPage/ResetPassPage";
+import NewPass from "./components/Pages/NewPass/NewPass";
 import "./App.scss";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <div className="page-container">
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            <Route exact path="/newpassword" component={NewPass} />
             <Route exact path="/todos" component={TodosPages} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignupPage} />

@@ -5,8 +5,13 @@ import AuthReducer from "./AuthReducer";
 import joi from "@hapi/joi";
 
 const AuthState = (props) => {
-  const alertContext = useContext(AlertContext);
-  const { setAlertLogin, setSignUpAlerts, setAlertChangePass } = alertContext;
+  const pattern = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  const {
+    setAlertLogin,
+    setSignUpAlerts,
+    setAlertChangePass,
+    setNewPassAlert,
+  } = useContext(AlertContext);
   const initalState = {};
 
   const [state, dispatch] = useReducer(AuthReducer, initalState);
@@ -30,7 +35,6 @@ const AuthState = (props) => {
       username: joi.string().alphanum().min(3).max(16).required(),
       password: joi.string().min(8).required(),
     });
-    const pattern = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     const { error } = userSchema.validate(user);
     if (error) {
       return setSignUpAlerts(error.details[0].message.replace(/"/g, ""), "err");
@@ -57,10 +61,33 @@ const AuthState = (props) => {
       Email: joi.string().email().required(),
     });
     const { error } = EmailSchema.validate({ Email });
-    console.log("");
     if (error) {
       setAlertChangePass(error.details[0].message.replace(/"/g, ""), "err");
     }
+    if (!pattern.test(state.password))
+      return setAlertChangePass(
+        "password must include a Special charachter",
+        "err"
+      );
+  };
+
+  // Set new Password
+  const setNewPass = (state) => {
+    if (state.password !== state.password2)
+      return setNewPassAlert("Passwords Do Not Match");
+
+    const passwordSchema = joi.object({
+      password: joi.string().min(8).required(),
+    });
+    const { error } = passwordSchema.validate({ password: state.password });
+    if (error) {
+      return setNewPassAlert(error.details[0].message.replace(/"/g, ""), "err");
+    }
+    if (!pattern.test(state.password))
+      return setNewPassAlert(
+        "password must include a Special charachter",
+        "err"
+      );
   };
   return (
     <AuthContext.Provider
@@ -68,6 +95,7 @@ const AuthState = (props) => {
         login,
         signUp,
         changePass,
+        setNewPass,
       }}
     >
       {props.children}

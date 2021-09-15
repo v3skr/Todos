@@ -113,7 +113,7 @@ const Card = () => {
                 Password Must Include numbers , letters , symbols and must be 8
                 or more charachters
               </h5>
-              <div className="password-check-line" style={style}></div>
+                <div className="password-check-line" style={style}></div>
             </div>
           )}
         </main>

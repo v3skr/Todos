@@ -10,7 +10,8 @@
   }
   main {
     width: 70%;
-    box-shadow: 1px 1px 10px $secondary-color, -1px -1px 10px $secondary-color;
+    background-color: $secondary-color;
+    box-shadow: $shadow;
     border-radius: 4px;
     margin: 2rem auto;
     padding: 20px 0;
