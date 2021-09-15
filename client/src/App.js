@@ -4,8 +4,9 @@ import Footer from "./components/Footer/Footer";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import SignupPage from "./components/Pages/SignupPage/SignupPage";
 import LandingPage from "./components/Pages/LandingPage/LandingPage";
-import "./App.scss";
 import TodosPages from "./components/Pages/TodosPage/TodosPages";
+import ResetPassPage from "./components/Pages/ResetPassPage/ResetPassPage";
+import "./App.scss";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/todos" component={TodosPages} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignupPage} />
+            <Route exact path="/resetpassword" component={ResetPassPage} />
           </Switch>
         </div>
         <Footer />
