@@ -8,6 +8,7 @@ import TodosPages from "./components/Pages/TodosPage/TodosPages";
 import ResetPassPage from "./components/Pages/ResetPassPage/ResetPassPage";
 import NewPass from "./components/Pages/NewPass/NewPass";
 import "./App.scss";
+import AccountPage from "./components/Pages/AccountPage/AccountPage";
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
         <div className="page-container">
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/newpassword" component={NewPass} />
             <Route exact path="/todos" component={TodosPages} />
+            <Route exact path="/account" component={AccountPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignupPage} />
+            <Route exact path="/newpassword" component={NewPass} />
             <Route exact path="/resetpassword" component={ResetPassPage} />
           </Switch>
         </div>
