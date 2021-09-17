@@ -1,8 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { useState, useContext } from "react";
+import Alert from "../../utils/Alert/Alert";
 import "./AccountPage.scss";
+import AuthContext from "../../../context/Auth/AuthContext";
+import AlertContext from "../../../context/Alerts/AlertContext";
 import Inputitem from "./Inputitem";
 
 const AccountPage = () => {
+  const { updateAccount } = useContext(AuthContext);
+  const { alertsAccount } = useContext(AlertContext);
+  let alertStyle;
   const [state, setState] = useState({
     Email: "",
     username: "",
@@ -13,13 +19,26 @@ const AccountPage = () => {
     isPassword: false,
     inEdit: false,
   });
+  config.isPassword
+    ? (alertStyle = {
+        top: "100px",
+      })
+    : (alertStyle = {
+        top: "180px",
+      });
   const onChange = (e) =>
     setState({ ...state, [e.target.name]: e.target.value });
   const passToggle = () =>
     setConfig({ ...config, isPassword: !config.isPassword });
-  const editToggle = () => setConfig({ ...config, inEdit: !config.inEdit });
+  const editToggle = () =>
+    setConfig({ ...config, inEdit: !config.inEdit, isPassword: false });
+  const onClick = () => updateAccount();
   return (
     <div className="account-page">
+      {alertsAccount.length > 0 &&
+        alertsAccount.map((alrt) => (
+          <Alert style={alertStyle} alrt={alrt} key={alrt.id} />
+        ))}
       <div className="input-con">
         <h1>Edit Your Account Details</h1>
         <Inputitem
@@ -69,7 +88,9 @@ const AccountPage = () => {
         )}
         {config.inEdit ? (
           <div className>
-            <button className="btn">Update</button>
+            <button className="btn" onClick={onClick}>
+              Update
+            </button>
             <button className="btn" onClick={editToggle}>
               Cancel
             </button>

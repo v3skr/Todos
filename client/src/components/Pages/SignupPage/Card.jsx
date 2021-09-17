@@ -80,7 +80,7 @@ const Card = () => {
           <h2>Sign Up</h2>
         </header>
         {alertsSignup.length > 0 &&
-          alertsSignup.map((alrt) => <Alert msg={alrt.msg} key={alrt.id} />)}
+          alertsSignup.map((alrt) => <Alert alrt={alrt} key={alrt.id} />)}
         <main>
           <InputItem
             name="username"
@@ -113,7 +113,7 @@ const Card = () => {
                 Password Must Include numbers , letters , symbols and must be 8
                 or more charachters
               </h5>
-                <div className="password-check-line" style={style}></div>
+              <div className="password-check-line" style={style}></div>
             </div>
           )}
         </main>

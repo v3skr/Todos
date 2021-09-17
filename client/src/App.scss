@@ -48,3 +48,33 @@ body {
     color: #111;
   }
 }
+.overlay {
+  background-color: #000;
+  // opacity: 0.8;
+  z-index: 3;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation-name: ol;
+  opacity: 0.8;
+  animation-duration: 0.3s;
+}
+@keyframes ol {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+.popup {
+  height: 40%;
+  width: 30%;
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  margin-left: -15%;
+  z-index: 4;
+}

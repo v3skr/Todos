@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AlertContext from "../../../context/Alerts/AlertContext";
+import Alert from "../../utils/Alert/Alert";
 import "./ResetPassPage.scss";
 
 const ResetPassPage = () => {
@@ -20,11 +21,7 @@ const ResetPassPage = () => {
         <div className="input-item">
           <h1>Enter Email Used In Your Account</h1>
           {alertsChangePass.length > 0 &&
-            alertsChangePass.map((alrt) => (
-              <div className="alert" key={alrt.id}>
-                {alrt.msg}
-              </div>
-            ))}
+            alertsChangePass.map((alrt) => <Alert alrt={alrt} key={alrt.id} />)}
           <div className="label">
             <label htmlFor="Email">Enter Email</label>
           </div>

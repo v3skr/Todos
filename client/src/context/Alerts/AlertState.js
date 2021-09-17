@@ -11,6 +11,10 @@ import {
   REMOVE_ALERT_CHANGE_PASS,
   SET_NEW_PASS_ALERT,
   REMOVE_NEW_PASS_ALERT,
+  REMOVE_ALRET_ACCOUNT,
+  SET_ALRET_ACCOUNT,
+  SET_TODO_ALERT,
+  REMOVE_TODO_ALERT,
 } from "../../types";
 
 const AlertState = (props) => {
@@ -19,6 +23,8 @@ const AlertState = (props) => {
     alertsSignup: [],
     alertsChangePass: [],
     alertsNewPass: [],
+    alertsAccount: [],
+    alertsTodo: [],
   };
   const [state, dispatch] = useReducer(AlertReducer, initalState);
 
@@ -78,6 +84,24 @@ const AlertState = (props) => {
   const removeNewPassAlert = (id) =>
     dispatch({ type: REMOVE_NEW_PASS_ALERT, payload: id });
 
+  //Set Account Alert
+  const setAccountAlert = (msg, type = "err") => {
+    const id = uuid();
+    dispatch({ type: SET_ALRET_ACCOUNT, payload: { msg, type, id } });
+    setTimeout(() => removeAccountAlert(id), 3000);
+  };
+  //Rmove Account Alert
+  const removeAccountAlert = (id) =>
+    dispatch({ type: REMOVE_ALRET_ACCOUNT, payload: id });
+
+  //set todo alert
+  const setTodoAlert = (msg, type) => {
+    const id = uuid();
+    dispatch({ type: SET_TODO_ALERT, payload: { msg, type, id } });
+    setTimeout(() => removeTodoAlert(id), 3000);
+  };
+  const removeTodoAlert = (id) =>
+    dispatch({ type: REMOVE_TODO_ALERT, payload: id });
   return (
     <AlertContext.Provider
       value={{
@@ -85,10 +109,14 @@ const AlertState = (props) => {
         alertsSignup: state.alertsSignup,
         alertsChangePass: state.alertsChangePass,
         alertsNewPass: state.alertsNewPass,
+        alertsAccount: state.alertsAccount,
+        alertsTodo: state.alertsTodo,
         setAlertLogin,
         setSignUpAlerts,
         setAlertChangePass,
         setNewPassAlert,
+        setAccountAlert,
+        setTodoAlert,
       }}
     >
       {props.children}

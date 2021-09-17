@@ -29,7 +29,7 @@ const Card = () => {
           <h2>Login</h2>
         </header>
         {alertsLogin.length > 0 &&
-          alertsLogin.map((alrt) => <Alert msg={alrt.msg} key={alrt.id} />)}
+          alertsLogin.map((alrt) => <Alert alrt={alrt} key={alrt.id} />)}
         <main>
           <InputItem
             name="username"

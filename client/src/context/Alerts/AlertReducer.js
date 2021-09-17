@@ -7,6 +7,10 @@ import {
   REMOVE_ALERT_CHANGE_PASS,
   REMOVE_NEW_PASS_ALERT,
   SET_NEW_PASS_ALERT,
+  SET_ALRET_ACCOUNT,
+  REMOVE_ALRET_ACCOUNT,
+  SET_TODO_ALERT,
+  REMOVE_TODO_ALERT,
 } from "../../types";
 
 const AlertReducer = (state, action) => {
@@ -63,6 +67,34 @@ const AlertReducer = (state, action) => {
       return {
         ...state,
         alertsNewPass: state.alertsNewPass.filter(
+          (alrt) => alrt.id !== action.payload
+        ),
+      };
+    }
+    case SET_ALRET_ACCOUNT: {
+      return {
+        ...state,
+        alertsAccount: [...state.alertsAccount, action.payload],
+      };
+    }
+    case REMOVE_ALRET_ACCOUNT: {
+      return {
+        ...state,
+        alertsAccount: state.alertsAccount.filter(
+          (alrt) => alrt.id !== action.payload
+        ),
+      };
+    }
+    case SET_TODO_ALERT: {
+      return {
+        ...state,
+        alertsTodo: [...state.alertsTodo, action.payload],
+      };
+    }
+    case REMOVE_TODO_ALERT: {
+      return {
+        ...state,
+        alertsTodo: state.alertsTodo.filter(
           (alrt) => alrt.id !== action.payload
         ),
       };

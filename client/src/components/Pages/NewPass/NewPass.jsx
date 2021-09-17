@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import "./NewPass.scss";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AlertContext from "../../../context/Alerts/AlertContext";
+import Alert from "../../utils/Alert/Alert";
+import "./NewPass.scss";
 
 const NewPass = () => {
   const [state, setState] = useState({
@@ -65,11 +66,7 @@ const NewPass = () => {
     <div className="new-pass">
       <h1>Enter A New Password</h1>
       {alertsNewPass.length > 0 &&
-        alertsNewPass.map((alrt) => (
-          <div className="alert" key={alrt.id}>
-            {alrt.msg}
-          </div>
-        ))}
+        alertsNewPass.map((alrt) => <Alert alrt={alrt} key={alrt.id} />)}
       <div className="input-item">
         <div className="label">
           <label htmlFor="">Password</label>

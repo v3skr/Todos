@@ -11,6 +11,7 @@ const AuthState = (props) => {
     setSignUpAlerts,
     setAlertChangePass,
     setNewPassAlert,
+    setAccountAlert,
   } = useContext(AlertContext);
   const initalState = {};
 
@@ -50,7 +51,9 @@ const AuthState = (props) => {
   const loadUser = () => {};
 
   //updateAccount :: UPDATE
-  const updateAccount = (newUser) => {};
+  const updateAccount = () => {
+    setAccountAlert("Checkd", "suc");
+  };
 
   //delete user account :: DELETE
   const deleteAcoount = () => {};
@@ -96,6 +99,7 @@ const AuthState = (props) => {
         signUp,
         changePass,
         setNewPass,
+        updateAccount,
       }}
     >
       {props.children}
