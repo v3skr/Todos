@@ -70,11 +70,24 @@ body {
   }
 }
 .popup {
-  height: 40%;
-  width: 30%;
+  height: 400px;
   position: fixed;
   top: 150px;
   left: 50%;
+  width: 30%;
   margin-left: -15%;
   z-index: 4;
+}
+@media (max-width: 1200px) {
+  .popup {
+    width: 70%;
+    margin-left: -35%;
+  }
+}
+@media (max-width: 600px) {
+  .popup {
+    top: 100px;
+    width: 90%;
+    margin-left: -45%;
+  }
 }

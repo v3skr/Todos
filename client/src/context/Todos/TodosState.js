@@ -36,6 +36,7 @@ const TodosState = (props) => {
   };
   //Toggles Add todo Card
   const toggleAddTodo = (payload = false) => {
+    toggleScroll(false);
     dispatch({ type: TOGGLE_ADD_TODO, payload });
     toggleOverLay(true);
   };
@@ -52,7 +53,6 @@ const TodosState = (props) => {
       setTodoAlert(error.details[0].message.replace(/"/g, ""));
     }
   };
-
   return (
     <TodosContext.Provider
       value={{

@@ -69,7 +69,6 @@ const TodosCard = ({
         )}
       </header>
       <div className="completed" onClick={setCompleted}>
-        <h2>Description :</h2>
         {config.completed ? (
           <span>
             <p>Completed</p>
@@ -82,6 +81,7 @@ const TodosCard = ({
           </span>
         )}
       </div>
+      <h2 className = "desc">Description :</h2>
       <main>
         {config.inEdit ? (
           <textarea value={state.desc} name="desc" onChange={onChange} />

@@ -5,11 +5,12 @@ import "./Header.scss";
 
 const Header = () => {
   const his = useHistory();
-  const { toggleDialog, toggleAddTodo } = React.useContext(TodosContext);
+  const { toggleDialog, toggleAddTodo, toggleOverLay } =
+    React.useContext(TodosContext);
   return !true ? (
     <div className="header">
       <h1>Todos</h1>
-      <div className="nav">
+      <div className="nav" onClick={() => toggleOverLay(false)}>
         <div></div>
         <div></div>
         <div></div>
@@ -33,10 +34,19 @@ const Header = () => {
       </div>
       <div className="header-btns">
         <i className="fas fa-power-off fa-2x" onClick={toggleDialog}></i>
-        <i className="fas fa-home fa-2x" onClick={() => his.push("/")}></i>
+        <i
+          className="fas fa-home fa-2x"
+          onClick={() => {
+            his.push("/todos");
+            toggleOverLay(false);
+          }}
+        ></i>
         <i
           className="far fa-user-circle fa-2x"
-          onClick={() => his.push("/account")}
+          onClick={() => {
+            his.push("/account");
+            toggleOverLay(false);
+          }}
         ></i>
         {his.location.pathname === "/todos" && (
           <i

@@ -6,7 +6,6 @@ const TodosReducer = (state, action) => {
       return { ...state };
     }
     case TOGGLE_OVERLAY: {
-      console.log(action.payload);
       return {
         ...state,
         isOverLay: action.payload,

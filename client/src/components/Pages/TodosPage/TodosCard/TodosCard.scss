@@ -7,6 +7,9 @@
   height: fit-content;
   background-color: $secondary-color;
   transition: $transition;
+  .desc {
+    text-align: start;
+  }
   input {
     width: 50%;
     margin: 0 10px;
@@ -19,7 +22,7 @@
   }
   .completed {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     align-content: center;
     margin: 10px 0 0 0;

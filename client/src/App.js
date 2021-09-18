@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
@@ -18,7 +18,6 @@ import AddTodo from "./components/Pages/TodosPage/AddTodo/AddTodo";
 function App() {
   const { isOverLay, isAddTodo, isDialog } = React.useContext(TodosContext);
   return (
-    <Router>
       <div className="App">
         <Header />
         {isOverLay && <OverLay />}
@@ -37,7 +36,6 @@ function App() {
         </div>
         <Footer />
       </div>
-    </Router>
   );
 }
 

@@ -21,11 +21,11 @@
       margin: 1rem 5px;
     }
     & .btn:nth-child(1) {
-      background-color: transparent;
-      border: 1px solid $primary-color;
+      background-color: darken($color: $primary-color, $amount: 10);
     }
     & .btn:nth-child(2) {
-      background-color: darken($color: $primary-color, $amount: 10);
+      background-color: transparent;
+      border: 1px solid $primary-color;
     }
   }
 }
