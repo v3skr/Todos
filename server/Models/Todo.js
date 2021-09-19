@@ -12,6 +12,10 @@ const TodoSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  userid: {
+    type: String,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("Todo", TodoSchema);
+module.exports = mongoose.model("Todo", TodoSchema, "Todos");
