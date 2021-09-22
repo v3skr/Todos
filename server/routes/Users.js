@@ -24,8 +24,12 @@ router.post("/", async (req, res) => {
       });
 
     //Check if the email exists
-    const user = await User.findOne({ Email });
-    if (user) return res.json({ msg: "Eamil Taken", type: "err" });
+    const email = await User.findOne({ Email });
+    if (email) return res.json({ msg: "Eamil Taken", type: "err" });
+
+    //Check if the username exists
+    const Username = await User.findOne({ username });
+    if (Username) return res.json({ msg: "Username Taken", type: "err" });
 
     //encrypt password
     const salt = await bcrypt.genSalt(10);
@@ -40,7 +44,7 @@ router.post("/", async (req, res) => {
     await newUser.save();
     res.json({ msg: "User Saved", type: "suc" });
   } catch (err) {
-    res.josn({ msg: err.message, type: "err" });
+    res.json({ msg: err.message, type: "err" });
   }
 });
 // PUT REQUEST

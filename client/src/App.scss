@@ -61,6 +61,13 @@ body {
   opacity: 0.8;
   animation-duration: 0.3s;
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 80vh;
+}
 @keyframes ol {
   0% {
     opacity: 0;

@@ -11,6 +11,7 @@ import {
   REMOVE_ALRET_ACCOUNT,
   SET_TODO_ALERT,
   REMOVE_TODO_ALERT,
+  SET_PROPMT,
 } from "../../types";
 
 const AlertReducer = (state, action) => {
@@ -97,6 +98,12 @@ const AlertReducer = (state, action) => {
         alertsTodo: state.alertsTodo.filter(
           (alrt) => alrt.id !== action.payload
         ),
+      };
+    }
+    case SET_PROPMT: {
+      return {
+        ...state,
+        prompt: action.payload,
       };
     }
     default:

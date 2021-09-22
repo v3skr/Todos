@@ -8,19 +8,25 @@ router.use(express.json());
 //POST A TODO
 router.post("/", UserAuth, async (req, res) => {
   try {
-    const { title, description, date } = req.body;
+    const { title, description, date, completed } = req.body;
     const todoSchema = joi.object({
-      title: joi.string().alphanum().required(),
+      title: joi.string().required(),
       date: joi.string().required(),
-      description: joi.string().alphanum().allow(""),
+      description: joi.string().allow(""),
+      completed: joi.boolean().required(),
+      userid: joi.string(),
     });
     const { error } = todoSchema.validate(req.body);
     if (error)
-      return res.json({ msg: error.details[0].message(/"/g, ""), type: "err" });
+      return res.json({
+        msg: error.details[0].message.replace(/"/g, ""),
+        type: "err",
+      });
     const todo = new Todo({
       title,
       description,
       date,
+      completed,
       userid: req.id,
     });
     await todo.save();

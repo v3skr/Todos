@@ -2,25 +2,21 @@ import React, { Fragment, useState, useContext } from "react";
 import TodosContext from "../../../../context/Todos/TodosContext";
 import "./TodosCard.scss";
 
-const TodosCard = ({
-  title = "title",
-  date = "2002-09-21",
-  desc = "lorem balabal",
-}) => {
+const TodosCard = ({ todo: { title, date, description, completed } }) => {
   const [config, setConfig] = useState({
-    completed: false,
     inEdit: false,
   });
   const [state, setState] = useState({
     title,
     date,
-    desc,
+    description,
+    completed,
   });
   const { toggleDialog } = useContext(TodosContext);
   const onChange = (e) =>
     setState({ ...state, [e.target.name]: e.target.value });
   const setCompleted = () => {
-    setConfig({ ...config, completed: !config.completed });
+    setState({ ...state, completed: !state.completed });
   };
   const setEdit = () => {
     setConfig({ ...config, inEdit: !config.inEdit });
@@ -30,13 +26,14 @@ const TodosCard = ({
     setState({
       title,
       date,
-      desc,
+      description,
+      completed,
     });
   };
   const Update = () => setEdit();
   let completedStyle;
   let disFooter;
-  if (config.completed) {
+  if (state.completed) {
     completedStyle = {
       opacity: ".3",
     };
@@ -69,7 +66,7 @@ const TodosCard = ({
         )}
       </header>
       <div className="completed" onClick={setCompleted}>
-        {config.completed ? (
+        {state.completed ? (
           <span>
             <p>Completed</p>
             <i className="fas fa-check-circle"></i>
@@ -81,12 +78,16 @@ const TodosCard = ({
           </span>
         )}
       </div>
-      <h2 className = "desc">Description :</h2>
+      <h2 className="desc">description :</h2>
       <main>
         {config.inEdit ? (
-          <textarea value={state.desc} name="desc" onChange={onChange} />
+          <textarea
+            value={state.description}
+            name="description"
+            onChange={onChange}
+          />
         ) : (
-          <p>{state.desc}</p>
+          <p>{state.description}</p>
         )}
       </main>
       <footer style={disFooter}>

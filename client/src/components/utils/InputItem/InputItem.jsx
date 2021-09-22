@@ -7,7 +7,12 @@ const InputItem = ({ name, value, onChange, type = "text" }) => {
       <label htmlFor={name}>
         {name.slice(0, 1).toUpperCase() + name.slice(1)} :
       </label>
-      <input type={type} name={name} value={value} onChange={onChange} />
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

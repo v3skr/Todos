@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../../context/Alerts/AlertContext";
 import TodosContext from "../../context/Todos/TodosContext";
 import "./Header.scss";
 
@@ -7,7 +8,8 @@ const Header = () => {
   const his = useHistory();
   const { toggleDialog, toggleAddTodo, toggleOverLay } =
     React.useContext(TodosContext);
-  return !true ? (
+  const { setPrompt  , setType} = React.useContext(AlertContext);
+  return !localStorage.token ? (
     <div className="header">
       <h1>Todos</h1>
       <div className="nav" onClick={() => toggleOverLay(false)}>
@@ -33,7 +35,13 @@ const Header = () => {
         <div></div>
       </div>
       <div className="header-btns">
-        <i className="fas fa-power-off fa-2x" onClick={toggleDialog}></i>
+        <i
+          className="fas fa-power-off fa-2x"
+          onClick={() => {
+            setPrompt("Are You Sure You Want To Log Out ?");
+            toggleDialog(true);
+          }}
+        ></i>
         <i
           className="fas fa-home fa-2x"
           onClick={() => {

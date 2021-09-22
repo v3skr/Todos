@@ -12,6 +12,10 @@ const TodoSchema = mongoose.Schema({
   description: {
     type: String,
   },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
   userid: {
     type: String,
     required: true,

@@ -1,20 +1,36 @@
 import React from "react";
-import "./TodosPages.scss";
 import TodosCard from "./TodosCard/TodosCard";
+import AuthContext from "../../../context/Auth/AuthContext";
+import TodosContext from "../../../context/Todos/TodosContext";
+import Loading from "../../utils/Loading";
+import "./TodosPages.scss";
 
 const TodosPages = () => {
-  return (
+  const { setId } = React.useContext(AuthContext);
+  const { todos, loadTodos, isLoading } = React.useContext(TodosContext);
+  React.useEffect(() => {
+    setId();
+    if (localStorage.token) {
+      async function callData() {
+        await loadTodos();
+      }
+      callData();
+    }
+  }, []);
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="todos-page">
       <header>
-        <h1>See all Your Todos</h1>
+        {todos.length > 0 ? (
+          <h1>See all Your Todos</h1>
+        ) : (
+          <h1>No Current Todos...</h1>
+        )}
       </header>
       <main>
-        <TodosCard />
-        <TodosCard />
-        <TodosCard />
-        <TodosCard />
-        <TodosCard />
-        <TodosCard />
+        {todos.length > 0 &&
+          todos.map((todo, id) => <TodosCard todo={todo} key={id} />)}
       </main>
     </div>
   );

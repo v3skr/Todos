@@ -1,24 +1,19 @@
-import {
-  DELETE_ACCOUNT,
-  LOAD_USER,
-  LOGIN,
-  SIGN_UP,
-  UPDATE_ACCOUNT,
-} from "../../types";
-const AuthReducer = (action, state) => {
+import { SET_ID, SET_USER } from "../../types";
+const AuthReducer = (state, action) => {
   switch (action.type) {
     default:
       return { ...state };
-
-    case LOGIN: {
+    case SET_USER: {
+      return {
+        ...state,
+        user: action.payload,
+      };
     }
-    case SIGN_UP: {
-    }
-    case UPDATE_ACCOUNT: {
-    }
-    case DELETE_ACCOUNT: {
-    }
-    case LOAD_USER: {
+    case SET_ID: {
+      return {
+        ...state,
+        id: action.payload,
+      };
     }
   }
 };

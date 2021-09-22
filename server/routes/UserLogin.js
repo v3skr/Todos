@@ -34,7 +34,7 @@ app.post("/", async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET, {
       expiresIn: "1h",
     });
-    res.json({ token });
+    res.send(token);
   } catch (err) {
     res.json({ msg: err.message, type: "err" });
   }

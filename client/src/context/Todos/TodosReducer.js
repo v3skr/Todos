@@ -1,4 +1,11 @@
-import { TOGGLE_OVERLAY, TOGGLE_ADD_TODO, TOGGLE_DIALOG } from "../../types";
+import {
+  TOGGLE_OVERLAY,
+  TOGGLE_ADD_TODO,
+  TOGGLE_DIALOG,
+  TOGGLE_LOADING,
+  SET_TODOS,
+  ADD_TODO,
+} from "../../types";
 
 const TodosReducer = (state, action) => {
   switch (action.type) {
@@ -23,6 +30,24 @@ const TodosReducer = (state, action) => {
         ...state,
         isAddTodo: state.isAddTodo ? false : state.isAddTodo,
         isDialog: action.payload,
+      };
+    }
+    case TOGGLE_LOADING: {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    }
+    case ADD_TODO: {
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
+    }
+    case SET_TODOS: {
+      return {
+        ...state,
+        todos: action.payload,
       };
     }
   }

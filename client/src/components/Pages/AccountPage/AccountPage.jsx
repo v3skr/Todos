@@ -1,13 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Alert from "../../utils/Alert/Alert";
 import "./AccountPage.scss";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AlertContext from "../../../context/Alerts/AlertContext";
 import Inputitem from "./Inputitem";
+import TodosContext from "../../../context/Todos/TodosContext";
+import Loading from "../../utils/Loading";
 
 const AccountPage = () => {
-  const { updateAccount } = useContext(AuthContext);
   const { alertsAccount } = useContext(AlertContext);
+  const { isLoading } = useContext(TodosContext);
+  const { updateAccount, loadUser, user } = useContext(AuthContext);
+  useEffect(() => {
+    async function callDate() {
+      await loadUser();
+    }
+    callDate();
+  }, []);
   let alertStyle;
   const [state, setState] = useState({
     Email: "",
@@ -33,7 +42,9 @@ const AccountPage = () => {
   const editToggle = () =>
     setConfig({ ...config, inEdit: !config.inEdit, isPassword: false });
   const onClick = () => updateAccount();
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="account-page">
       {alertsAccount.length > 0 &&
         alertsAccount.map((alrt) => (
@@ -45,7 +56,7 @@ const AccountPage = () => {
           inEdit={config.inEdit}
           onChange={onChange}
           label="Email"
-          data="v3sk@yahoo.com"
+          value={user ? user.Email : ""}
           type="email"
           name="Email"
         />
@@ -53,7 +64,7 @@ const AccountPage = () => {
           inEdit={config.inEdit}
           onChange={onChange}
           label="Username"
-          data="v3skr"
+          value={user ? user.username : ""}
           type="text"
           name="username"
         />
@@ -62,7 +73,6 @@ const AccountPage = () => {
             inEdit={config.inEdit}
             onChange={onChange}
             label="New Password"
-            data="password"
             type="password"
             name="password"
           />
@@ -72,7 +82,6 @@ const AccountPage = () => {
             inEdit={config.inEdit}
             onChange={onChange}
             label="Confirm Password"
-            data="password2"
             type="password"
             name="password2"
           />

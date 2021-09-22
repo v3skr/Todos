@@ -15,6 +15,9 @@ import {
   SET_ALRET_ACCOUNT,
   SET_TODO_ALERT,
   REMOVE_TODO_ALERT,
+  SET_TYPE,
+  SET_PROPMT,
+  SET_PAYLOD,
 } from "../../types";
 
 const AlertState = (props) => {
@@ -25,9 +28,28 @@ const AlertState = (props) => {
     alertsNewPass: [],
     alertsAccount: [],
     alertsTodo: [],
+    type: null,
+    prompt: null,
+    payload: null,
   };
   const [state, dispatch] = useReducer(AlertReducer, initalState);
+  const res = (type) => {
+    switch (type) {
+      default: {
+        return;
+      }
+    }
+  };
 
+  const setType = (type) => {
+    dispatch({ type: SET_TYPE, payload: type });
+  };
+  const setPayload = (payload) => {
+    dispatch({ type: SET_PAYLOD, payload });
+  };
+  const setPrompt = (prompt) => {
+    dispatch({ type: SET_PROPMT, payload: prompt });
+  };
   //Set login Alerts
   const setAlertLogin = (msg, type) => {
     const id = uuid();
@@ -111,12 +133,18 @@ const AlertState = (props) => {
         alertsNewPass: state.alertsNewPass,
         alertsAccount: state.alertsAccount,
         alertsTodo: state.alertsTodo,
+        prompt: state.prompt,
+        payload: state.payload,
+        type: state.type,
         setAlertLogin,
         setSignUpAlerts,
         setAlertChangePass,
         setNewPassAlert,
         setAccountAlert,
         setTodoAlert,
+        setType,
+        setPayload,
+        setPrompt,
       }}
     >
       {props.children}

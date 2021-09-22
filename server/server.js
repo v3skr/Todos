@@ -7,6 +7,7 @@ app.use("/users", require("./routes/Users"));
 app.use("/userlogin", require("./routes/UserLogin"));
 app.use("/todos", require("./routes/Todos"));
 
-app.listen("3000", () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log("server is running on port 5000");
 });

@@ -2,6 +2,8 @@
 @import "../../../colors";
 .dialog {
   @extend .popup;
+  height: 500px;
+  padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px #111, -2px -2px 8px #111;
   background-color: darken($color: $primary-color, $amount: 20);

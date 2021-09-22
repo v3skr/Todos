@@ -4,15 +4,19 @@ import Alert from "../../../utils/Alert/Alert";
 import AlertContext from "../../../../context/Alerts/AlertContext";
 import TodosContext from "../../../../context/Todos/TodosContext";
 import "./AddTodo.scss";
+import AuthContext from "../../../../context/Auth/AuthContext";
 
 const AddTodo = () => {
   const { alertsTodo } = useContext(AlertContext);
+  const { id } = useContext(AuthContext);
   const { toggleOverLay, addTodo } = useContext(TodosContext);
 
   const [state, setState] = useState({
     title: "",
     date: "",
     description: "",
+    completed: false,
+    userid: id,
   });
   const onChange = (e) =>
     setState({ ...state, [e.target.name]: e.target.value });
@@ -30,7 +34,7 @@ const AddTodo = () => {
           onChange={onChange}
         />
         <div className="label">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="desc">Description</label>
         </div>
         <textarea
           className="desc"
