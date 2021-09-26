@@ -1,4 +1,5 @@
 export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 export const SIGN_UP = "SIGN_UP";
 export const LOAD_USER = "LOAD_USER";
 export const UPDATE_ACCOUNT = "UPDATE_ACCOUNT";
@@ -24,5 +25,7 @@ export const ADD_TODO = "ADD_TODO";
 export const SET_ID = "SET_ID";
 export const SET_TODOS = "SET_TODOS";
 export const SET_PROPMT = "SET_PROPMT";
-export const SET_PAYLOD = "SET_PAYLOD";
+export const SET_PAYLOAD = "SET_PAYLOAD";
 export const SET_TYPE = "SET_TYPE";
+export const DELETE_TODO = "DELETE_TODO";
+export const CLEAR = "CLEAR";

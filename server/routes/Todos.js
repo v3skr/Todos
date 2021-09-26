@@ -68,4 +68,11 @@ router.put("/", UserAuth, async (req, res) => {
     res.json({ msg: err.message, type: "err" });
   }
 });
+
+// DELETE A TODO
+router.delete("/", UserAuth, async (req, res) => {
+  const todoid = req.header("todo-id");
+  await Todo.findByIdAndDelete(todoid);
+  res.json({ msg: "Task Deleted", type: "suc" });
+});
 module.exports = router;

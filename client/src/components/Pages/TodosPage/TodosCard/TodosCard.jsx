@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useContext } from "react";
 import TodosContext from "../../../../context/Todos/TodosContext";
+import { DELETE_TODO } from "../../../../types";
 import "./TodosCard.scss";
 
-const TodosCard = ({ todo: { title, date, description, completed } }) => {
+const TodosCard = ({ todo: { title, date, description, completed, _id } }) => {
   const [config, setConfig] = useState({
     inEdit: false,
   });
@@ -11,8 +12,11 @@ const TodosCard = ({ todo: { title, date, description, completed } }) => {
     date,
     description,
     completed,
+    _id,
   });
-  const { toggleDialog } = useContext(TodosContext);
+  const { toggleDialog, setPrompt, setType, setPayload } =
+    useContext(TodosContext);
+
   const onChange = (e) =>
     setState({ ...state, [e.target.name]: e.target.value });
   const setCompleted = () => {
@@ -102,7 +106,15 @@ const TodosCard = ({ todo: { title, date, description, completed } }) => {
           </Fragment>
         ) : (
           <Fragment>
-            <button className="btn" onClick={toggleDialog}>
+            <button
+              className="btn"
+              onClick={() => {
+                toggleDialog(true);
+                setPrompt("Are You Sure You Want To Delete This Task ? ");
+                setType(DELETE_TODO);
+                setPayload(state._id);
+              }}
+            >
               Delete
             </button>
             <button className="btn" onClick={setEdit}>

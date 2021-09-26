@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../../context/Alerts/AlertContext";
 import TodosContext from "../../context/Todos/TodosContext";
+import { LOGOUT } from "../../types";
 import "./Header.scss";
 
 const Header = () => {
   const his = useHistory();
-  const { toggleDialog, toggleAddTodo, toggleOverLay } =
+  const { toggleDialog, toggleAddTodo, toggleOverLay, setPrompt, setType } =
     React.useContext(TodosContext);
-  const { setPrompt  , setType} = React.useContext(AlertContext);
   return !localStorage.token ? (
     <div className="header">
       <h1>Todos</h1>
@@ -38,8 +37,9 @@ const Header = () => {
         <i
           className="fas fa-power-off fa-2x"
           onClick={() => {
-            setPrompt("Are You Sure You Want To Log Out ?");
             toggleDialog(true);
+            setPrompt("Are You Sure You Want To Log Out ?");
+            setType(LOGOUT);
           }}
         ></i>
         <i

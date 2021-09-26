@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Alert from "../../utils/Alert/Alert";
 import "./AccountPage.scss";
 import AuthContext from "../../../context/Auth/AuthContext";
@@ -8,6 +9,10 @@ import TodosContext from "../../../context/Todos/TodosContext";
 import Loading from "../../utils/Loading";
 
 const AccountPage = () => {
+  const history = useHistory();
+  useEffect(() => {
+    if (!localStorage.token) history.push("/");
+  });
   const { alertsAccount } = useContext(AlertContext);
   const { isLoading } = useContext(TodosContext);
   const { updateAccount, loadUser, user } = useContext(AuthContext);

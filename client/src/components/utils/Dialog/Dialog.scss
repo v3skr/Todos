@@ -2,7 +2,11 @@
 @import "../../../colors";
 .dialog {
   @extend .popup;
-  height: 500px;
+  position: absolute;
+  height: 450px;
+  width: 500px;
+  top: 10%;
+  margin-left: -250px;
   padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px #111, -2px -2px 8px #111;

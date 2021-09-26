@@ -3,9 +3,14 @@ import TodosCard from "./TodosCard/TodosCard";
 import AuthContext from "../../../context/Auth/AuthContext";
 import TodosContext from "../../../context/Todos/TodosContext";
 import Loading from "../../utils/Loading";
+import { useHistory } from "react-router";
 import "./TodosPages.scss";
 
 const TodosPages = () => {
+  const history = useHistory();
+  React.useEffect(() => {
+    if (!localStorage.token) history.push("/");
+  }, []);
   const { setId } = React.useContext(AuthContext);
   const { todos, loadTodos, isLoading } = React.useContext(TodosContext);
   React.useEffect(() => {

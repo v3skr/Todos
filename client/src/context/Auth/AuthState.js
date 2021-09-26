@@ -44,7 +44,6 @@ const AuthState = (props) => {
     localStorage.setItem("token", res.data);
     history.push("/todos");
   };
-
   const setId = () => {
     if (localStorage.token) {
       const decoded = jwt_decode(localStorage.token);
